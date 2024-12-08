@@ -14,7 +14,7 @@ public class Fibonacci {
         System.out.println(fiboOfNum);
     }
 
-   private static int Fibo(int num) {
+    private static int Fibo(int num) {
         if (num < 2) {
             return num;
         }

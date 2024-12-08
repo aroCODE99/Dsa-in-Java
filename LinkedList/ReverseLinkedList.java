@@ -4,7 +4,7 @@ class ListNode {
 
     public ListNode(int val) {
         this.val = val;
-        next = null;
+        this.next = null;
     }
 
     public void Display() {

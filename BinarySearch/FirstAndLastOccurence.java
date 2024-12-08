@@ -20,11 +20,10 @@ public class FirstAndLastOccurence {
             } else if (nums[mid] < target) {
                 start = mid + 1;
             } else {
-                // Target found; find left and right
                 int left = mid;
                 int right = mid;
 
-                // Find the leftmost index
+                // Find the leftMost index
                 while (left > 0 && nums[left] == nums[left - 1]) {
                     left--;
                 }

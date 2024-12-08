@@ -6,10 +6,10 @@ public class MinInsertionToMakeParenthesisValid {
     }
 
     public static int minInsertions(String s) {
-int openCount = 0;
-int insertions = 0;
-int i = 0;
-while (i < s.length()) {
+        int openCount = 0;
+        int insertions = 0;
+        int i = 0;
+        while (i < s.length()) {
             char currChar = s.charAt(i);
             if (currChar == '(') {
                 // if the curr is '('

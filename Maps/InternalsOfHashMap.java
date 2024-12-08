@@ -14,7 +14,6 @@ class MyHashMap<K, V> {
     }
 
     private final int defaultCapacity = 16;
-    // explaination is down at the end
     private LinkedList<Node<K, V>>[] buckets;
 
     @SuppressWarnings("unchecked")

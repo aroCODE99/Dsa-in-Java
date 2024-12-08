@@ -2,7 +2,8 @@ import java.util.Arrays;
 
 public class PermutationInString {
     public static void main(String[] args) {
-        String s1 = "ab", s2 = "eidbaooo";
+        String s1 = "ab";
+        String s2 = "eidbaooo";
         boolean havePermutationInString = permutationInString(s1, s2);
         System.out.println(havePermutationInString);
     }

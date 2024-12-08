@@ -9,7 +9,7 @@ public class KLargestElement {
     }
 
     public static int FindExceptionn(int[] nums, int k) {
-        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+        PriorityQueue<Integer> minHeap = new PriorityQueuPriorityQueuie<>();
         for (int num : nums) {
             minHeap.add(num);
             if (minHeap.size() > k) {

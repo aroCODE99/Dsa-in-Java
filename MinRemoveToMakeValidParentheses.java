@@ -1,12 +1,9 @@
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Stack;
 
 public class MinRemoveToMakeValidParentheses {
     public static void main(String[] args) {
-        String s = "))((";
-        String validString = minRemoveToMakeValid(s);
-        System.out.println(validString); // Should output an empty string as all parentheses are unmatched
+        String s = "lee(t(c)o)de)";
+        System.out.println(minRemoveToMakeValid(s));
     }
 
     public static String minRemoveToMakeValid(String s) {
@@ -35,3 +32,14 @@ public class MinRemoveToMakeValidParentheses {
         return sb.toString();
     }
 }
+
+// String s = "lee(t(c)o)de)";
+//
+// "lee(t(c)o)de)"
+//
+//
+// if (s.charAt('(')) stack.push(currChar);
+// else {
+// if (s.charAt(')')) stack.pop();
+// else
+// }

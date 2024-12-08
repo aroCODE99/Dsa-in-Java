@@ -1,0 +1,343 @@
+let's first look at the traversal's technique and when they are applicable
+
+1. Breadth-first-search
+    -> this technique is useful for :
+        a. when the ans lies near the root node
+        b. when your are asked to search by level by level
+        let's take a example of: 
+             1. finding the height with bfs i.e. breadth-first-search
+                how could we do that 
+
+                                1
+                              /   \
+                             2     3
+                            / \   / \
+                           4   5 6   7
+
+                so the height of this tree is 3.
+                the idea is to increment the count at each level
+                but the real question is how will we know what is that that level
+
+                so let's figure this out
+                so at level one in queue only one Node will be there i.e 1
+
+                at level two there'll be two element's in queue 
+
+                how will i know that the new level has started ?
+                
+
+                what if we used a similar technique like for finding the right side of the binaryTree
+
+                so that technique worked
+
+
+             2. finding the sum at every level of tree 
+                Desc - return the sum of every level in binary tree
+
+             3. Average of level's in Binary Tree
+                Desc - Given the root of a binary tree, return the average value of the nodes on each level in the form of an array.
+                        Answers within 10-5 of the actual answer will be accepted.
+
+             4. Print in zig-zag order
+                
+                                1
+                              /   \
+                             2     3
+                            / \   / \
+                           4   5 6   7
+
+                OP : [[1], [3, 2], [4, 5, 6, 7]]
+
+                now we are using Deque for this
+
+            5. Populating The next Right Pointer's (Super Important question)
+                Description: 
+                        You are given a perfect binary tree where all leaves are on the same level, and every parent has two children. The binary tree has the following definition:
+
+                        struct Node {
+                          int val;
+                          Node *left;
+                          Node *right;
+                          Node *next;
+                        }
+                        Populate each next pointer to point to its next right node. If there is no next right node, the next pointer should be set to NULL.
+
+                        Initially, all next pointers are set to NULL.
+                see in the question it self we got the hint that we level order Traversal BFS
+                now the real question is to do this with o(1) constant space time
+                here, we could not use the queue
+                because with queue the space complexity is o(n)
+
+                so How could we do this ? 
+
+                                1
+                              /   \
+                             2  -  3
+                            / \   / \
+                           4 - 5-6 - 7
+
+                first let's try this with o(n) space i mean with queue
+                How will i be able to do this question with queue also
+                
+                we could do like first we poll the currNode and then we could take a peek() at a new next Node in a queue for it's right Link
+                it got submitted in first try (obiusoly with queue)
+
+                
+                now let's think how will we able to this with constant space
+                
+                well that was super simple like you just do the 
+                a. you just travel untill the left is not null i.e. till leaf
+                b. then when you are at that level you make a duplicate of leftNode and travel through that whole level
+                c. connecting the them 
+                
+                easy right.
+
+                6. Cousins in Binary Tree (Easy)
+                 binary tree with unique values
+                (Two nodes of a binary tree are cousins if they have the same depth with different parents)
+                let's do this question afterward's
+
+                                1
+                              /   \
+                             2     3
+                            / \   / \
+                           4   5 6   7
+
+                now how will we try to do this thing
+
+                we could just record the level's of each find's and then compare them
+                now we solved this with the BFS 
+
+                but let's do this with HashMap
+                Now how will we try to do this ? 
+
+                                1
+                              /   \
+                             2     3
+                            / \   / \
+                           4   5 6   7
+ 
+                we could do the same BFS with but use hashMap to store the parent's
+                
+                let's suppose the x = 4, and y = 5 we do the bfs and then we add 4 with it's parent
+                and same with latter
+
+                so the idea is to add the whole level in the map
+                and then we get the x and y compare them to their parent
+
+                like for example: {4: Node2, 5: Node2}
+
+                and then we compare 4 and then 5 with their parent's and if they are not same we return true;
+                and that's are hashMap solution
+
+                7. Symmetric Tree 
+                Description: Given the root of a binary tree, check whether it is a mirror of itself 
+                (i.e., symmetric around its center).
+                how will we approach this problem
+
+                                  1
+                               /     \
+                             2         2
+                           /   \     /   \
+                         3      4    4    3
+                        / \    / \  / \   / \
+                       5   6  7   8 8  7 6   5
+
+                (symmetric around its center)
+                so this is the example of the Symmetric BinaryTree
+
+                how will you know if the level is (symmetric/mirror) 
+
+                at level3 we will have queue something similar to this 
+
+                meaning at every level we are checking (prevLevel * 2) which will be the (queue.size()) 
+  
+                so at level one we have we need to check for 1/2 nodes i.e. 0
+
+                so here's something i got from the chatGpt
+                why not compare the queue with the two pointer approach
+
+                [3, 4, 4, 3]
+                one at starting point and second at ending point like how we do in palindromic check
+
+                so you just add the level in the queue
+
+                and then you check the level a certain way
+                like : startNode.left == endNode.right
+                       startNode.left == endNode.left
+
+                i think this is super good solution by chat gpt
+                You go right, left and then check them if they are equal then only you go deep again
+
+
+                8. Let's do the problem check if tree is balanced 
+                    balanced tree's height differ should be atMost 1
+
+                                        1
+                                      /   \
+                                     2     3
+                                    / \   / \
+                                   4   5 6   7
+   
+                    that's it you just have to check if the difference of Math.abs(leftHeight and rightHeight) is > 1 
+                    if it is that just return -1 
+
+
+
+so in Bfs meaning traversing by level's could help us much
+Let's have a little rant on how to approach this type's of problem's 
+first see what have we given 
+
+like literally every written thing is going to be the hint to solve these problem's
+so read question's twice or even thrice
+
+with these type's of problem's (linkedList, tree's, etc) where you just need to follow what's given 
+just do that and  when you get stucked just try to get unstucked
+
+-> LEARNING'S OF BFS WHENEVER THERE IS LEVEL MENTIONED IN ANY QUESTION WE KNOW THAT THERE WE ARE GOING TO USE BFS IN QUESTION
+-> i think looking at multiples solution's help's us in a great way acc to The "Primagen"
+
+2. DFS (Depth first Search)
+    1 . Diameter problem
+    so let's do this problem
+
+                      1
+                   /     \
+                 2         2
+               /   \        
+             3      4        
+            / \    / \       
+           5   6  7   8      
+
+    so the logic is to calculate the height of left of the node and right of the node
+    after that we have to return maxHeight till that node
+    
+    so the algo goes something like this
+    first we go left, and then we go right  
+
+    after reaching to null we cal any diameter passing from that node
+    and then we return the maxHeight of that node
+
+    NOTE: here we used the postOrderTraversal because we needed to find the leftHeight and rightHeight and then we needed to do 
+          something with the both height's 
+
+    2. invertTree
+    
+                                1
+                              /   \
+                             2     3
+                            / \   / \
+                           4   5 6   7
+
+                                1
+                              /   \
+                             3     2
+                            / \   / \
+                           7   6 5   4
+
+        so see we are using preOrderTraversal because we first swapping and then we going left and right
+
+        so how this works is when you swapp this node's there subtree also get's swapped
+
+                                1
+                              /   \
+                             2     3
+                            / \   / \
+                           4   5 6   7
+
+                                1
+                              /   \
+                             3     2
+                            / \   / \
+                           6   7 4   5
+
+        see how with 3 and 2 got swapped their child's also got swapped
+
+    3. Convert sorted array to Tree
+        Description: Given an integer array nums where the elements are sorted in ascending order,
+        convert it to a hight-balanced binaryTree
+
+        so we're given the int arr nums which is sorted
+        int[] nums = {-10,-3,0,5,9};
+
+        so now this question is lil bit tuff
+        
+        This is important question of why did we choose this approach ? 
+
+        We choose this specific approach of always picking the middle element of a sorted array to build a balanced binary search tree 
+        (BST) because it ensures:
+
+        1 .Balanced Tree Structure:
+        By always choosing the middle element as the root for each subtree, the height difference between the left and right subtrees is minimized.
+        A balanced tree improves performance for operations like search, insert, and delete, which have a time complexity of 
+        O(logn) in balanced trees compared to 
+        O(n) in unbalanced trees.
+        
+        2. Binary Search Tree (BST) Property:
+        The middle element becomes the root, ensuring that:
+        All elements to the left of the middle are smaller (left subtree).
+        All elements to the right of the middle are larger (right subtree).
+        This maintains the BST property, which is crucial for efficient searching       
+
+        3. Flatten BinaryTree with preOrderTraversal to LinkedList
+
+                                1
+                              /   \
+                             2     3
+                            / \   / \
+                           4   5 6   7
+
+                                |
+                                |
+                               \|/
+
+                    1   2   4   5   3   6   7
+
+        why can't we just do normal preOrderTraversal and build the LinkedList with the help of helper function
+        let's dry run this and figure this out
+        but we have to do this in place with space complexity with o(1)
+        
+        but we could do this with the help of the array/queue
+        now i did with this solution and now we have to do this with o(1) solution
+        
+        now let's try to come up with the solution  
+        i know that the swapping will be involve
+
+                                1
+                              /   \
+                             2     3
+                            / \   / \
+                           4   5 6   7
+
+        
+        4. let's try to solve the problem called "Lowest common ancesstor"
+
+                                1
+                              /   \
+                             2     3
+                            / \   / \
+                           4   5 6   7
+
+            common anc of 2 and 5 is 2 and 2 and 3 its 1 and 4 and 7's is also 1
+
+            let's dry run the 6 and 7
+
+            we go first root.left and check if (root.val == p.val || root.val == q.val)
+            which is obiously not here
+
+            so we go further left and check the same condition (if (root.val == p.val || root.val == q.val))
+            which is also not true here
+
+            so it goes to the right
+            and check for that condition
+
+            not true
+            
+            so it goes to the 3 and check 
+            then it goes left now we have 6 which is equal to the value p so now this function will return the Node 6
+
+            now it goes to the right after finding value to the left  and it also finds the value 
+            7 so we return the current root Node 
+
+            so this is mota mota idea that we have 
+            
